@@ -1,26 +1,146 @@
 @import "tailwindcss";
 
+/* FC25-inspired color palette */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* EA FC25 Colors */
+  --fc25-blue: #00d4ff;
+  --fc25-green: #00ff41;
+  --fc25-yellow: #ffeb3b;
+  --fc25-orange: #ff6b35;
+  --fc25-pink: #e91e63;
+  --fc25-purple: #9c27b0;
+  
+  /* Dark theme backgrounds */
+  --bg-primary: #0a0b0d;
+  --bg-secondary: #151619;
+  --bg-tertiary: #1e1f23;
+  --bg-card: #232529;
+  --bg-card-hover: #2a2b30;
+  
+  /* Text colors */
+  --text-primary: #ffffff;
+  --text-secondary: #b3b4b6;
+  --text-muted: #8a8b8d;
+  
+  /* Accent colors */
+  --accent-primary: var(--fc25-green);
+  --accent-secondary: var(--fc25-blue);
+  --accent-danger: #ff4757;
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #0a0b0d 0%, #151619 50%, #1a4a3a 100%);
+  --gradient-card: linear-gradient(135deg, rgba(35, 37, 41, 0.8) 0%, rgba(30, 31, 35, 0.8) 100%);
+  --gradient-button: linear-gradient(135deg, var(--fc25-green) 0%, #00cc37 100%);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Apple-inspired spacing system */
+.spacing-xs { margin: 0.25rem; }
+.spacing-sm { margin: 0.5rem; }
+.spacing-md { margin: 1rem; }
+.spacing-lg { margin: 1.5rem; }
+.spacing-xl { margin: 2rem; }
+.spacing-2xl { margin: 3rem; }
+.spacing-3xl { margin: 4rem; }
+
+/* Custom FC25-inspired components */
+.fc25-card {
+  background: var(--gradient-card);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 255, 65, 0.1);
+  border-radius: 16px;
+  box-shadow: 
+    0 4px 32px rgba(0, 0, 0, 0.3),
+    0 1px 4px rgba(0, 255, 65, 0.1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.fc25-button {
+  background: var(--gradient-button);
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 255, 65, 0.2);
+}
+
+.fc25-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 255, 65, 0.3);
+}
+
+.fc25-input {
+  background: rgba(35, 37, 41, 0.9);
+  border: 1px solid rgba(179, 180, 182, 0.2);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-family: var(--font-inter);
+  transition: all 0.2s ease;
+}
+
+.fc25-input:focus {
+  border-color: var(--fc25-green);
+  box-shadow: 0 0 0 3px rgba(0, 255, 65, 0.1);
+  outline: none;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--gradient-primary);
+  color: var(--text-primary);
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  font-feature-settings: "kern", "liga", "clig", "calt";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* Apple-inspired typography scale */
+.text-display {
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+.text-headline {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+.text-subheadline {
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.text-body {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.text-caption {
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* Glassmorphism effects */
+.glass-effect {
+  backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(35, 37, 41, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection styling */
+::selection {
+  background: rgba(0, 255, 65, 0.3);
+  color: white;
 }
